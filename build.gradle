@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.3'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.ohgiraffers'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.modelmapper:modelmapper:3.1.1'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
+    // JWT (토큰) 라이브러리
+    implementation "io.jsonwebtoken:jjwt:0.9.1"
+
+    // Spring 버전이 바뀌게 되면서 발생한 호환 문제를 해결하기 위해 추가한 라이브러리
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+
+    // JSON 형식으로 응답할 수 있게 해주는 라이브러리
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
