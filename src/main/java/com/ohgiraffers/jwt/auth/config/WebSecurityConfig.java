@@ -28,7 +28,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 public class WebSecurityConfig {
     /**
      * 1. 정적 자원에 대한 인증된 사용자의 접근을 설정하는 메서드
-     * @return WebSeruciryCusomizer
+     * @return WebSecurityCustomizer
      * */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
@@ -125,7 +125,7 @@ public class WebSecurityConfig {
 
     /**
      * 7. spring security 기반의 사용자의 정보가 맞을 경우 결과를 수행하는 handler
-     * @return customAuthLoginSuccessHandler
+     * @return CustomAuthSuccessHandler
      * */
     @Bean
     public CustomAuthSuccessHandler customAuthLoginSuccessHandler(){
@@ -134,7 +134,7 @@ public class WebSecurityConfig {
 
     /**
      * 8. Spring security의 사용자 정보가 맞지 않은 경우 행되는 메서드
-     * @return CustomAuthFailUreHandler
+     * @return CustomAuthFailUserHandler
      * */
     @Bean
     public CustomAuthFailUserHandler customAuthFailUserHandler(){
